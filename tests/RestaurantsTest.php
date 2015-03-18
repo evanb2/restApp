@@ -25,6 +25,8 @@
             $test_cuisine->save();
 
             $name = "Olive Garden";
+            $address = "123 Mason St.";
+            $description = "A fine Italian dining experience.";
             $cuisine_id = $test_cuisine->getId();
             $test_restaurant = new Restaurant($name, $address, $description, $id, $cuisine_id);
             $test_restaurant->save();
@@ -36,7 +38,7 @@
             $this->assertEquals(true, is_numeric($result));
         }
 
-        function test_getCuisineId()
+        function test_getCuisine_id()
         {
             //Arrange
             $name = "Italian";
@@ -45,12 +47,14 @@
             $test_cuisine->save();
 
             $name = "Olive Garden";
+            $address = "123 Mason St.";
+            $description = "A fine Italian dining experience.";
             $cuisine_id = $test_cuisine->getId();
             $test_restaurant = new Restaurant($name, $address, $description, $id, $cuisine_id);
             $test_restaurant->save();
 
             //Act
-            $result = $test_restaurant->getCuisineId();
+            $result = $test_restaurant->getCuisine_id();
 
             //Assert
             $this->assertEquals(true, is_numeric($result));
@@ -65,6 +69,8 @@
             $test_cuisine->save();
 
             $name = "Olive Garden";
+            $address = "123 Mason St.";
+            $description = "A fine Italian dining experience.";
             $cuisine_id = $test_cuisine->getId();
             $test_restaurant = new Restaurant($name, $address, $description, $id, $cuisine_id);
             $test_restaurant->save();
@@ -86,6 +92,8 @@
             $test_cuisine->save();
 
             $name = "Olive Garden";
+            $address = "123 Mason St.";
+            $description = "A fine Italian dining experience.";
             $cuisine_id = $test_cuisine->getId();
             $test_restaurant = new Restaurant($name, $address, $description, $id, $cuisine_id);
 
@@ -94,7 +102,7 @@
 
             //Assert
             $result = Restaurant::getAll();
-            $this->assertEquals($test_restuarant, $result[0]);
+            $this->assertEquals($test_restaurant, $result[0]);
         }
 
         function test_getAll()
@@ -106,11 +114,15 @@
             $test_cuisine->save();
 
             $name = "Olive Garden";
+            $address = "123 Mason St.";
+            $description = "A fine Italian dining experience.";
             $cuisine_id = $test_cuisine->getId();
             $test_restaurant = new Restaurant($name, $address, $description, $id, $cuisine_id);
             $test_restaurant->save();
 
             $name2 = "Little Big Burger";
+            $address2 = "345 NW 23rd Ave";
+            $description2 = "A fine burger eating experience.";
             $test_restaurant2 = new Restaurant($name2, $address2, $description2, $id, $cuisine_id);
             $test_restaurant2->save();
 
