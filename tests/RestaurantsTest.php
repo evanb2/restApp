@@ -131,6 +131,63 @@
 
             //Assert
             $this->assertEquals([$test_restaurant, $test_restaurant2], $result);
+        }
+
+        function test_deleteAll()
+        {
+            //Arrange
+            $name = "Italian";
+            $id = null;
+            $test_cuisine = new Cuisine($name, $id);
+            $test_cuisine->save();
+
+            $name = "Olive Garden";
+            $address = "123 Mason St.";
+            $description = "A fine Italian dining experience.";
+            $cuisine_id = $test_cuisine->getId();
+            $test_restaurant = new Restaurant($name, $address, $description, $id, $cuisine_id);
+            $test_restaurant->save();
+
+            $name2 = "Little Big Burger";
+            $address2 = "345 NW 23rd Ave";
+            $description2 = "A fine burger eating experience.";
+            $test_restaurant2 = new Restaurant($name2, $address2, $description2, $id, $cuisine_id);
+            $test_restaurant2->save();
+
+            //Act
+            Restaurant::deleteAll();
+
+            //Assert
+            $result = Restaurant::getAll();
+            $this->assertEquals([], $result);
+        }
+
+        function test_find()
+        {
+            //Arrange
+            $name = "Italian";
+            $id = null;
+            $test_cuisine = new Cuisine($name, $id);
+            $test_cuisine->save();
+
+            $name = "Olive Garden";
+            $address = "123 Mason St.";
+            $description = "A fine Italian dining experience.";
+            $cuisine_id = $test_cuisine->getId();
+            $test_restaurant = new Restaurant($name, $address, $description, $id, $cuisine_id);
+            $test_restaurant->save();
+
+            $name2 = "Little Big Burger";
+            $address2 = "345 NW 23rd Ave";
+            $description2 = "A fine burger eating experience.";
+            $test_restaurant2 = new Restaurant($name2, $address2, $description2, $id, $cuisine_id);
+            $test_restaurant2->save();
+
+            //Act
+            $result = Restaurant::find($test_restaurant->getId());
+
+            //Assert
+            $this->assertEquals($test_restaurant, $result);
 
         }
     }

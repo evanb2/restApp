@@ -91,9 +91,22 @@
                 $cuisine_id = $restaurant['cuisine_id'];
                 $new_restaurant = new Restaurant($name, $address, $description, $id, $cuisine_id);
                 array_push($restaurants, $new_restaurant);
-            }
+        }
 
             return $restaurants;
+        }
+
+        static function find($search_id)
+        {
+            $found_restaurant = null;
+            $restaurants = Restaurant::getAll();
+            foreach($restaurants as $restaurant) {
+                $restaurant_id = $restaurant->getId();
+                if ($restaurant_id == $search_id) {
+                    $found_restaurant = $restaurant;
+                }
+            }
+            return $found_restaurant;
         }
 
         static function deleteAll()
